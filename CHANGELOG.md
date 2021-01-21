@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## 0.1.0
 
-* TODO: Describe initial release.
+- Fade away widget on reaching deadline
+- Ability to show banner with deadline info
+- Ability to customize duration to hide banner afterwards.
+- Ability to enable/disable widget
+- Ability to control directionality
