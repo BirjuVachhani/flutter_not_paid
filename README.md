@@ -4,6 +4,26 @@
 
 Add opacity to the body tag and decrease it every day until their site completely fades away. Set a due date and customize the number of days you offer them until the website is fully vanished.
 
+## Usage
+
+```dart
+NotPaid(
+  deadline: 8,
+  dueDate: DateTime(2020, 01, 28),
+  enabled: true, // default: true
+  showBanner: true, // default: true
+  duration: Duration(seconds: 10), // default: 5 seconds
+  directionality: TextDirection.ltr, // default: ltr
+  child: MaterialApp(
+    title: 'Flutter Not Paid Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: MyHomePage(title: 'Flutter Not Paid Home Page'),
+  ),
+  ...
+```
+
 ## Author
 Inspired from [klempa](https://github.com/kleampa)'s [not-paid](https://github.com/kleampa/not-paid)
 
