@@ -20,7 +20,7 @@ dependencies:
 ## Usage
 
 ```dart
-import 'package:not_paid/not_paid.dart';
+import 'package:flutter_not_paid/flutter_not_paid.dart';
 
 NotPaid(
   deadline: 8,
@@ -62,8 +62,8 @@ by [Birju Vachhani](https://github.com/BirjuVachhani)
 
 ## Starware
 
-Flutter Scrolling Calendar is Starware.
-This means you're free to use the project, as long as you star its GitHub repository.
+Flutter Not Paid is Starware.
+This means you're free to use the project, as long as you star its [GitHub repository](https://github.com/birjuvachhani/flutter_not_paid).
 Your appreciation makes us grow and glow up. ⭐
 
 ## License

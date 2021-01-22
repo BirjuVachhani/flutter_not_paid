@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  not_paid:
+  flutter_not_paid:
     path: ..
 
 dev_dependencies:

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:not_paid/not_paid.dart';
+import 'package:flutter_not_paid/flutter_not_paid.dart';
 
 void main() {
   runApp(MyApp());
