@@ -1,0 +1,7 @@
+<component name="CopyrightManager">
+  <settings default="BSD 3-Clause">
+    <module2copyright>
+      <element module="flutter package" copyright="BSD 3-Clause" />
+    </module2copyright>
+  </settings>
+</component>
