@@ -7,8 +7,8 @@
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
@@ -20,14 +20,15 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 // Author: Birju Vachhani
@@ -39,16 +40,30 @@ import 'package:intl/intl.dart' show DateFormat;
 /// A widget that fades as deadline comes closer and hides completely
 /// when the deadline is reached.
 class NotPaid extends StatefulWidget {
+  /// Child widget. [MaterialApp] in most cases
   final Widget child;
+
+  /// Due date for the payment. This will be used to calculate opacity.
   final DateTime dueDate;
 
-  // In days
+  /// Deadline in days after the due date for the payment.
+  /// This will be used to calculate opacity.
   final int deadline;
+
+  /// Allows to enable/disable the widget
   final bool enabled;
+
+  /// If set to true, will show a banner with deadline info on
+  /// the bottom of the app for given [duration].
   final bool showBanner;
+
+  /// Will show deadline info banner for this duration and then will hide it.
   final Duration duration;
+
+  /// Default is [TextDirection.ltr]
   final TextDirection directionality;
 
+  /// Default constructor
   const NotPaid({
     Key key,
     this.dueDate,
@@ -63,7 +78,7 @@ class NotPaid extends StatefulWidget {
         assert(directionality != null),
         assert(enabled != null),
         assert(showBanner != null),
-        this.deadline = deadline ?? 0,
+        deadline = deadline ?? 0,
         super(key: key);
 
   @override
@@ -109,7 +124,7 @@ class _NotPaidState extends State<NotPaid> {
                 child: Text(
                   opacity == 0
                       ? "You've reached the deadline!"
-                      : 'Deadline: ${_getFormattedDate(widget.dueDate.add(Duration(days: widget.deadline)))}',
+                      : _getDeadlineText(),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -129,9 +144,15 @@ class _NotPaidState extends State<NotPaid> {
 
     if (DateTime.now().isAfter(widget.dueDate)) {
       if (widget.deadline <= 0) return 0.0;
-      int delta = DateTime.now().difference(widget.dueDate).inDays;
+      final delta = DateTime.now().difference(widget.dueDate).inDays;
       return delta > widget.deadline ? 0.0 : 1.0 - (delta / widget.deadline);
     }
     return 1.0;
+  }
+
+  String _getDeadlineText() {
+    final formattedDate =
+        _getFormattedDate(widget.dueDate.add(Duration(days: widget.deadline)));
+    return 'Deadline: $formattedDate';
   }
 }
