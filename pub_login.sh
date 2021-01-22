@@ -24,9 +24,25 @@ if [ -z "${PUB_DEV_PUBLISH_EXPIRATION}" ]; then
 fi
 
 # Create credentials.json file.
-pub_cache_dir='~/.pub-cache'
-mkdir -p $pub_cache_dir
-cat <<EOF >$pub_cache_dir/credentials.json
+flutter_dir=`which flutter`
+flutter_dir=${flutter_dir/\/bin\/flutter/""}
+
+pub_cache_dir="~/.pub-cache"
+flutter_pub_cache_dir="$flutter_dir/.pub-cache"
+
+#mkdir -p $pub_cache_dir
+#cat <<EOF >$pub_cache_dir/credentials.json
+#{
+#  "accessToken":"${PUB_DEV_PUBLISH_ACCESS_TOKEN}",
+#  "refreshToken":"${PUB_DEV_PUBLISH_REFRESH_TOKEN}",
+#  "tokenEndpoint":"${PUB_DEV_PUBLISH_TOKEN_ENDPOINT}",
+#  "scopes":["https://www.googleapis.com/auth/userinfo.email","openid"],
+#  "expiration":${PUB_DEV_PUBLISH_EXPIRATION}
+#}
+#EOF
+
+mkdir -p $flutter_pub_cache_dir
+cat <<EOF >$flutter_pub_cache_dir/credentials.json
 {
   "accessToken":"${PUB_DEV_PUBLISH_ACCESS_TOKEN}",
   "refreshToken":"${PUB_DEV_PUBLISH_REFRESH_TOKEN}",
