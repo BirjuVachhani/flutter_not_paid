@@ -102,35 +102,40 @@ class _NotPaidState extends State<NotPaid> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: widget.directionality,
-      child: Stack(
-        children: [
-          Opacity(
-            opacity: opacity,
-            child: IgnorePointer(ignoring: opacity == 0, child: widget.child),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: AnimatedOpacity(
-              duration: Duration(seconds: 1),
-              opacity: opacity != 1.0 && widget.showBanner && !_hideBanner
-                  ? 1.0
-                  : 0.0,
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 4),
-                alignment: Alignment.center,
-                color: Colors.red,
-                child: Text(
-                  opacity == 0
-                      ? "You've reached the deadline!"
-                      : _getDeadlineText(),
-                  textAlign: TextAlign.center,
+      child: MediaQuery(
+        data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: opacity,
+              child: IgnorePointer(ignoring: opacity == 0, child: widget.child),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: SafeArea(
+                child: AnimatedOpacity(
+                  duration: Duration(seconds: 1),
+                  opacity: opacity != 1.0 && widget.showBanner && !_hideBanner
+                      ? 1.0
+                      : 0.0,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    alignment: Alignment.center,
+                    color: Colors.red,
+                    child: Text(
+                      opacity == 0
+                          ? "You've reached the deadline!"
+                          : _getDeadlineText(),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
