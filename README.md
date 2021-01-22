@@ -4,9 +4,19 @@
 
 Add opacity to the body tag and decrease it every day until their site completely fades away. Set a due date and customize the number of days you offer them until the website is fully vanished.
 
+## Installation
+
+Add this to your package's pubspec.yaml file:
+```yaml
+dependencies:
+  flutter_not_paid: <latest_version>
+```
+
 ## Usage
 
 ```dart
+import 'package:not_paid/not_paid.dart';
+
 NotPaid(
   deadline: 8,
   dueDate: DateTime(2020, 01, 28),
@@ -23,6 +33,22 @@ NotPaid(
   ),
   ...
 ```
+
+## Features and bugs
+
+Please file feature requests and bugs at the [issue tracker][tracker].
+
+[tracker]: https://github.com/BirjuVachhani/flutter_not_paid/issues
+[docs]: https://pub.dev/documentation/flutter_not_paid/latest/
+
+
+#### Liked what you saw?
+
+Show some love and support by starring the [repository](https://github.com/birjuvachhani/flutter_not_paid).
+
+Or You can
+
+<a href="https://www.buymeacoffee.com/birjuvachhani" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
 
 ## Author
 Inspired from [klempa](https://github.com/kleampa)'s [not-paid](https://github.com/kleampa/not-paid)
