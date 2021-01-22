@@ -1,4 +1,9 @@
+![Banner](banner.png)
+
 # Not Paid - Flutter
+
+[![Pub Version](https://img.shields.io/pub/v/not_paid)](https://pub.dev/packages/not_paid)
+[![Starware](https://img.shields.io/badge/Starware-⭐-black?labelColor=f9b00d)](https://github.com/zepfietje/starware)
 
 ## Client did not pay?
 
@@ -54,6 +59,12 @@ Or You can
 Inspired from [klempa](https://github.com/kleampa)'s [not-paid](https://github.com/kleampa/not-paid)
 
 by [Birju Vachhani](https://github.com/BirjuVachhani)
+
+## Starware
+
+Flutter Scrolling Calendar is Starware.
+This means you're free to use the project, as long as you star its GitHub repository.
+Your appreciation makes us grow and glow up. ⭐
 
 ## License
 
