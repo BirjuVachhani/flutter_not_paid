@@ -1,4 +1,4 @@
-![Banner](banner.png)
+![Banner](https://raw.githubusercontent.com/BirjuVachhani/flutter_not_paid/main/banner.png)
 
 # Not Paid - Flutter
 
