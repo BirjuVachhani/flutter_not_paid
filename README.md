@@ -4,6 +4,7 @@
 
 [![Pub Version](https://img.shields.io/pub/v/not_paid)](https://pub.dev/packages/not_paid)
 [![Starware](https://img.shields.io/badge/Starware-⭐-black?labelColor=f9b00d)](https://github.com/zepfietje/starware)
+[![Null Safety](https://img.shields.io/badge/Supports-Null%20Safety-brightgreen)](https://pub.dev/packages/not_paid)
 
 ## Client did not pay?
 
