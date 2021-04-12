@@ -44,7 +44,7 @@ class NotPaid extends StatefulWidget {
   final Widget child;
 
   /// Due date for the payment. This will be used to calculate opacity.
-  final DateTime dueDate;
+  final DateTime? dueDate;
 
   /// Deadline in days after the due date for the payment.
   /// This will be used to calculate opacity.
@@ -65,20 +65,15 @@ class NotPaid extends StatefulWidget {
 
   /// Default constructor
   const NotPaid({
-    Key key,
+    Key? key,
     this.dueDate,
     this.directionality = TextDirection.ltr,
     this.duration = const Duration(seconds: 5),
     this.showBanner = true,
-    int deadline,
-    @required this.child,
+    int? deadline,
+    required this.child,
     this.enabled = true,
-  })  : assert(child != null),
-        assert(duration != null),
-        assert(directionality != null),
-        assert(enabled != null),
-        assert(showBanner != null),
-        deadline = deadline ?? 0,
+  })  : deadline = deadline ?? 0,
         super(key: key);
 
   @override
@@ -87,7 +82,7 @@ class NotPaid extends StatefulWidget {
 
 class _NotPaidState extends State<NotPaid> {
   bool _hideBanner = false;
-  double opacity;
+  late double opacity;
 
   @override
   void initState() {
@@ -103,7 +98,7 @@ class _NotPaidState extends State<NotPaid> {
     return Directionality(
       textDirection: widget.directionality,
       child: MediaQuery(
-        data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+        data: MediaQueryData.fromWindow(WidgetsBinding.instance!.window),
         child: Stack(
           children: [
             Opacity(
@@ -145,19 +140,22 @@ class _NotPaidState extends State<NotPaid> {
   }
 
   double _getOpacity() {
-    if (widget.dueDate == null || !widget.enabled) return 1.0;
+    final dueDate = widget.dueDate;
+    if (dueDate == null || !widget.enabled) return 1.0;
 
-    if (DateTime.now().isAfter(widget.dueDate)) {
+    if (DateTime.now().isAfter(dueDate)) {
       if (widget.deadline <= 0) return 0.0;
-      final delta = DateTime.now().difference(widget.dueDate).inDays;
+      final delta = DateTime.now().difference(dueDate).inDays;
       return delta > widget.deadline ? 0.0 : 1.0 - (delta / widget.deadline);
     }
     return 1.0;
   }
 
   String _getDeadlineText() {
+    final dueDate = widget.dueDate;
+    if (dueDate == null || !widget.enabled) return '';
     final formattedDate =
-        _getFormattedDate(widget.dueDate.add(Duration(days: widget.deadline)));
+        _getFormattedDate(dueDate.add(Duration(days: widget.deadline)));
     return 'Deadline: $formattedDate';
   }
 }
