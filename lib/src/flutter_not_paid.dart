@@ -77,7 +77,7 @@ class NotPaid extends StatefulWidget {
         super(key: key);
 
   @override
-  _NotPaidState createState() => _NotPaidState();
+  State<NotPaid> createState() => _NotPaidState();
 }
 
 class _NotPaidState extends State<NotPaid> {
@@ -98,7 +98,7 @@ class _NotPaidState extends State<NotPaid> {
     return Directionality(
       textDirection: widget.directionality,
       child: MediaQuery(
-        data: MediaQueryData.fromWindow(WidgetsBinding.instance!.window),
+        data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
         child: Stack(
           children: [
             Opacity(
@@ -111,12 +111,12 @@ class _NotPaidState extends State<NotPaid> {
               right: 0,
               child: SafeArea(
                 child: AnimatedOpacity(
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   opacity: opacity != 1.0 && widget.showBanner && !_hideBanner
                       ? 1.0
                       : 0.0,
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 4),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
                     alignment: Alignment.center,
                     color: Colors.red,
                     child: Text(
