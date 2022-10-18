@@ -63,6 +63,13 @@ class NotPaid extends StatefulWidget {
   /// Default is [TextDirection.ltr]
   final TextDirection directionality;
 
+  /// Text to display when/after deadline is reached.
+  final String deadlineReachedMessage;
+
+  /// Allows to construct custom message to display before deadline is reached.
+  /// [DateTime] param is the deadline date.
+  final String Function(DateTime)? deadlineMessageBuilder;
+
   /// Default constructor
   const NotPaid({
     Key? key,
@@ -73,6 +80,8 @@ class NotPaid extends StatefulWidget {
     int? deadline,
     required this.child,
     this.enabled = true,
+    this.deadlineReachedMessage = "You've reached the deadline!",
+    this.deadlineMessageBuilder,
   })  : deadline = deadline ?? 0,
         super(key: key);
 
@@ -121,7 +130,7 @@ class _NotPaidState extends State<NotPaid> {
                     color: Colors.red,
                     child: Text(
                       opacity == 0
-                          ? "You've reached the deadline!"
+                          ? widget.deadlineReachedMessage
                           : _getDeadlineText(),
                       textAlign: TextAlign.center,
                     ),
@@ -154,8 +163,13 @@ class _NotPaidState extends State<NotPaid> {
   String _getDeadlineText() {
     final dueDate = widget.dueDate;
     if (dueDate == null || !widget.enabled) return '';
-    final formattedDate =
-        _getFormattedDate(dueDate.add(Duration(days: widget.deadline)));
+    final deadlineDate = dueDate.add(Duration(days: widget.deadline));
+
+    if (widget.deadlineMessageBuilder != null) {
+      return widget.deadlineMessageBuilder!(deadlineDate);
+    }
+
+    final formattedDate = _getFormattedDate(deadlineDate);
     return 'Deadline: $formattedDate';
   }
 }
