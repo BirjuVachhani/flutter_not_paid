@@ -1,3 +1,9 @@
+## 1.0.1
+
+- Allow custom before & after deadline messages.
+- Use flutter lints for code quality.
+- Fixes lint warnings.
+
 ## 1.0.0
 
 - Migrated to null safety

@@ -1,6 +1,6 @@
 name: flutter_not_paid
 description: Client did not pay? Add this widget into your app and the app will fade away completely on reaching deadline.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/BirjuVachhani/flutter_not_paid/community
 
 environment:
